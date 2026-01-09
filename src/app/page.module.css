@@ -1,0 +1,186 @@
+/* src/app/page.module.css */
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Fundo levemente cinza igual da imagem */
+  font-family: sans-serif;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4rem;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #0f172a;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  color: #64748b;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.link:hover { color: #5b21b6; }
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* --- BOTÕES --- */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.btnPrimary {
+  background-color: #6d28d9; /* Roxo SellFlux */
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(109, 40, 217, 0.39);
+}
+
+.btnPrimary:hover { background-color: #5b21b6; }
+
+.btnOutline {
+  background-color: white;
+  color: #6d28d9;
+  border: 1px solid #6d28d9;
+}
+
+.btnOutline:hover { background-color: #f3e8ff; }
+
+/* --- HERO SECTION --- */
+.hero {
+  text-align: center;
+  padding: 6rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tag {
+  background-color: #ede9fe;
+  color: #6d28d9;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #475569;
+  max-width: 700px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+.heroButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+/* --- GRID DE CARDS --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Colunas */
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  background-color: #f3e8ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6d28d9;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.cardText {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* --- STATS (Parte de baixo) --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.statCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.statLabel { font-size: 0.85rem; color: #64748b; }

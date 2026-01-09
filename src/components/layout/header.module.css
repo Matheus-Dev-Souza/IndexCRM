@@ -1,0 +1,56 @@
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.warningBanner {
+  background-color: #15803d; /* Verde escuro */
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  height: 60px;
+  background-color: #0b0c15;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  color: #cbd5e1;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.projectSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: white;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.headerLink {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.headerLink:hover { color: white; }
