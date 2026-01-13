@@ -24,7 +24,7 @@ export default function LandingPage() {
 
         <div className={styles.navActions}>
           <Link href="/login" className={styles.link}>Login</Link>
-          <Link href="/login" className={`${styles.btn} ${styles.btnPrimary}`}>
+          <Link href="/register" className={`${styles.btn} ${styles.btnPrimary}`}>
              Começar Agora 🚀
           </Link>
         </div>
