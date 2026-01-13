@@ -15,6 +15,7 @@ const IconLock = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="non
 const IconEye = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>;
 
 export default function LoginPage() {
+  const router = useRouter(); // <--- CHAME O HOOK
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,7 +24,7 @@ export default function LoginPage() {
     // Simulação de login
     setTimeout(() => {
       setLoading(false);
-      window.location.href = "/dashboard";
+      router.push('/dashboard');
     }, 1500);
   };
 
