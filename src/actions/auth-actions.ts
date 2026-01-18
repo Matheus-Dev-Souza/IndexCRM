@@ -1,41 +1,75 @@
-// src/actions/auth-actions.ts
 'use server'
 
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
+// URL do seu Back-end Java (verifique se está rodando na 8080)
+const API_URL = process.env.NEXT_PUBLIC_API_URL + '/auth';
+
+// --- LOGIN ---
 export async function loginAction(formData: FormData) {
-  // Simular um atraso de rede (opcional)
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
 
-  const email = formData.get('email')
-  const password = formData.get('password')
-
-  // --- AQUI ENTRARIA A CHAMADA PARA O SEU BACKEND JAVA ---
-  // Por enquanto, vamos fazer mockado (falso)
-  if (email === 'admin@meucrm.com' && password === '123456') {
-    
-    // CORREÇÃO 1: O await aqui está correto
-    (await cookies()).set('session_token', 'token-falso-do-usuario-123', { 
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 24 * 7, // 1 semana
-      path: '/',
+  try {
+    const response = await fetch(`${API_URL}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+      cache: 'no-store'
     })
 
-    // Redireciona para o dashboard
-    // IMPORTANTE: Verifique se você quer ir para '/deals' ou '/dashboard'
-    // Se a sua pasta principal for 'dashboard', mude aqui para redirect('/dashboard')
-    redirect('/deals') 
-  } else {
-    // Se falhar, retorna erro
-    return { error: 'Credenciais inválidas' }
+    if (!response.ok) {
+      return { error: 'Email ou senha inválidos' }
+    }
+
+    const data = await response.json()
+    
+    // Configuração do Cookie
+    const cookieStore = await cookies()
+    cookieStore.set('session_token', data.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 60 * 60 * 24, // 1 dia
+      path: '/',
+    })
+  } catch (err) {
+    return { error: 'Erro de conexão com o servidor' }
   }
+
+  // Redireciona para o Dashboard
+  redirect('/pt-BR/dashboard')
 }
 
+// --- REGISTRO (Esta é a função que estava faltando) ---
+export async function registerAction(formData: FormData) {
+  const name = formData.get('name') as string
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+  const role = 'USER' 
+
+  try {
+    const response = await fetch(`${API_URL}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password, role }),
+      cache: 'no-store'
+    })
+
+    if (!response.ok) {
+      return { error: 'Erro ao cadastrar. O e-mail pode já estar em uso.' }
+    }
+  } catch (err) {
+    console.error(err);
+    return { error: 'Erro de conexão ao tentar registrar' }
+  }
+
+  // Se der certo, redireciona para o login
+  redirect('/pt-BR/sign-in')
+}
+
+// --- LOGOUT ---
 export async function logoutAction() {
-  // CORREÇÃO 2: Adicionei o (await ...) aqui também, pois estava faltando
   (await cookies()).delete('session_token')
-  
-  redirect('/login')
+  redirect('/pt-BR/sign-in')
 }

@@ -1,0 +1,94 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #050505;
+  color: #fff;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.logo span { color: #5b4bf6; }
+
+.subtitle {
+  color: #71717a;
+  font-size: 0.9rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  background-color: #101014;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid #27272a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cardTitle {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  text-align: center;
+  color: #71717a;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.form { display: flex; flex-direction: column; gap: 15px; }
+
+.inputGroup { display: flex; flex-direction: column; gap: 6px; }
+
+.label { font-size: 0.85rem; color: #a1a1aa; }
+
+.inputWrapper { position: relative; display: flex; align-items: center; }
+
+.input {
+  width: 100%;
+  background-color: #09090b;
+  border: 1px solid #27272a;
+  padding: 12px 12px 12px 40px; /* Espaço para o ícone */
+  border-radius: 6px;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus { border-color: #5b4bf6; }
+
+.iconLeft { position: absolute; left: 12px; color: #52525b; }
+
+.submitButton {
+  background-color: #5b4bf6;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.submitButton:hover { background-color: #4c3ee0; }
+
+.footer { text-align: center; margin-top: 20px; font-size: 0.9rem; color: #a1a1aa; }
+.link { color: #5b4bf6; text-decoration: none; font-weight: bold; }
