@@ -1,11 +1,9 @@
+// src/app/[locale]/(dashboard)/layout.tsx
 import type { Metadata } from "next";
-// Se você ainda não criou o componente Sidebar, vamos fazer uma estrutura básica aqui mesmo
-// para garantir que funcione. Depois você pode mover para components/layout.
-import styles from './page.module.css'; // Vamos reusar o CSS para simplificar ou criar um layout.module.css
 
 export const metadata: Metadata = {
-  title: "Dashboard | SellFlux Clone",
-  description: "Dashboard gerenciador",
+  title: "Dashboard | IndexCRM",
+  description: "Gerencie seus leads e vendas",
 };
 
 export default function DashboardLayout({
@@ -14,7 +12,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#13131f' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#13131f', color: '#e1e1e6' }}>
       
       {/* SIDEBAR (Barra Lateral) */}
       <aside style={{ 
@@ -24,38 +22,37 @@ export default function DashboardLayout({
         padding: '20px',
         display: 'flex',
         flexDirection: 'column',
-        color: '#a1a1aa'
+        position: 'fixed', // Fixa a barra
+        height: '100vh',
+        left: 0,
+        top: 0
       }}>
         <div style={{ marginBottom: '30px', color: 'white', fontWeight: 'bold', fontSize: '1.2rem' }}>
-          IndexCRM <span style={{ fontSize: '0.7rem', color: '#5b4bf6' }}>v3.0.102</span>
+          IndexCRM <span style={{ fontSize: '0.7rem', color: '#5b4bf6' }}>v3.0</span>
         </div>
 
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            {/* Itens do Menu */}
-            <div style={{ color: 'white', background: '#5b4bf6', padding: '10px', borderRadius: '6px', cursor: 'pointer' }}>
-               Dashboard
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ color: 'white', background: '#5b4bf6', padding: '10px', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}>
+               📊 Dashboard
             </div>
-            <div style={{ cursor: 'pointer' }}>Funis de vendas</div>
-            <div style={{ cursor: 'pointer' }}>Fluxos</div>
-            <div style={{ cursor: 'pointer' }}>Leads</div>
-            <div style={{ cursor: 'pointer' }}>Integrações</div>
-            <div style={{ cursor: 'pointer' }}>Páginas</div>
-            <div style={{ cursor: 'pointer' }}>Relatórios</div>
+            <div style={{ padding: '10px', cursor: 'pointer', color: '#a1a1aa' }}>🚀 Funis de vendas</div>
+            <div style={{ padding: '10px', cursor: 'pointer', color: '#a1a1aa' }}>👥 Leads</div>
+            <div style={{ padding: '10px', cursor: 'pointer', color: '#a1a1aa' }}>🔌 Integrações</div>
         </nav>
 
         <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid #2d2d3a' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '32px', height: '32px', background: '#5b4bf6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>M</div>
+                <div style={{ width: '32px', height: '32px', background: '#5b4bf6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>A</div>
                 <div style={{ fontSize: '0.85rem' }}>
-                    <div style={{ color: 'white' }}>Matheus S</div>
-                    <div>escolala.br@...</div>
+                    <div style={{ color: 'white' }}>Admin</div>
+                    <div style={{ color: '#71717a', fontSize: '0.75rem' }}>admin@index.com</div>
                 </div>
             </div>
         </div>
       </aside>
 
       {/* ÁREA DE CONTEÚDO PRINCIPAL */}
-      <main style={{ flex: 1, overflowY: 'auto' }}>
+      <main style={{ flex: 1, marginLeft: '260px', padding: '0' }}>
         {children}
       </main>
 
