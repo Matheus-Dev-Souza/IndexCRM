@@ -20,13 +20,14 @@ export function Sidebar() {
   const params = useParams(); 
   const locale = params.locale || 'pt-BR'; // <--- O SEGREDO: Pega 'pt-BR' ou 'en' da URL
 
-  // Agora montamos os links dinamicamente com o locale
-  const menuItems = [
+const menuItems = [
     { name: "Dashboard", path: `/${locale}/dashboard`, icon: Icons.Dashboard },
     { name: "Funis de Vendas", path: `/${locale}/dashboard/funnels`, icon: Icons.Funnels },
     { name: "Fluxos", path: `/${locale}/dashboard/flows`, icon: Icons.Flows },
     { name: "Leads", path: `/${locale}/dashboard/leads`, icon: Icons.Leads },
+    { name: "Páginas", path: `/${locale}/dashboard/pages`, icon: Icons.Dashboard }, // <--- NOVO
     { name: "Integrações", path: `/${locale}/dashboard/integrations`, icon: Icons.Integrations },
+    { name: "Relatórios", path: `/${locale}/dashboard/reports`, icon: Icons.Dashboard }, // <--- NOVO
     { name: "Configurações", path: `/${locale}/dashboard/settings`, icon: Icons.Settings },
   ];
 
