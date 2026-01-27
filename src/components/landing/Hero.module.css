@@ -1,0 +1,61 @@
+/* src/components/landing/Hero.module.css */
+.tag {
+  background-color: #ede9fe;
+  color: #6d28d9;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #475569;
+  max-width: 700px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+.heroButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+/* Botões do Hero (Duplicados para garantir independência) */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.btnPrimary {
+  background-color: #6d28d9;
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(109, 40, 217, 0.39);
+}
+
+.btnPrimary:hover { background-color: #5b21b6; }
+
+.btnOutline {
+  background-color: white;
+  color: #6d28d9;
+  border: 1px solid #6d28d9;
+}
+
+.btnOutline:hover { background-color: #f3e8ff; }
