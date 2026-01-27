@@ -1,6 +1,7 @@
 // src/app/[locale]/(dashboard)/dashboard/page.tsx
 import Link from 'next/link';
 import styles from './page.module.css';
+import { Header } from "@/components/layout/header"; 
 
 // Precisamos tipar o params como uma Promise para versões recentes do Next.js
 export default async function DashboardPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -10,17 +11,8 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
     <div className={styles.container}>
       
       {/* HEADER */}
-      <div className={styles.header}>
-        <h1 className={styles.projectSelector}>
-           Dashboard Geral
-        </h1>
-        
-        <div className={styles.headerActions}>
-          <span>🎓 EAD</span>
-          <span>❓ Ajuda</span>
-        </div>
-      </div>
-
+      <Header />
+      
 {/* ESTATÍSTICAS RÁPIDAS */}
       <div className={styles.statsRow}>
         
