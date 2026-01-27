@@ -1,0 +1,201 @@
+/* src/app/[locale]/(dashboard)/dashboard/reports/page.module.css */
+
+.container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #e1e1e6;
+}
+
+/* --- Header --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.dateRange {
+  background: #1e1e2d;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #2d2d3a;
+  font-size: 0.9rem;
+}
+
+.filterBtn {
+  background: #5b4bf6;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filterBtn:hover {
+  background-color: #4c3ee0;
+}
+
+/* --- Layout Principal --- */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* --- Gráfico Principal --- */
+.mainChartCard {
+  background: #1e1e2d;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2d2d3a;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartTitle {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.chartArea {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #2d2d3a;
+}
+
+.bar {
+  flex: 1;
+  background: #3b82f6;
+  border-radius: 4px 4px 0 0;
+  opacity: 0.8;
+  transition: height 0.5s ease-out, opacity 0.2s;
+}
+
+.bar:hover {
+  opacity: 1;
+  background: #60a5fa;
+}
+
+.chartLabels {
+  display: flex;
+  justify-content: space-between;
+  marginTop: 10px;
+  color: #a1a1aa;
+  font-size: 0.8rem;
+}
+
+/* --- Painel Lateral --- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Total */
+.totalCard {
+  background: #161822;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2d2d3a;
+}
+
+.totalLabel {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: block;
+}
+
+.totalValue {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin: 5px 0;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 6px;
+  background: #2d2d3a;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.progressBarFill {
+  background: #6366f1;
+  border-radius: 3px;
+  height: 100%;
+}
+
+.totalPercentage {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #6366f1;
+  margin-top: 5px;
+}
+
+/* Lista de Tags */
+.tagsCard {
+  background: #1e1e2d;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2d2d3a;
+  flex: 1;
+}
+
+.tagsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tagItem {
+  /* Espaçamento entre itens */
+}
+
+.tagHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+}
+
+.tagName {
+  color: #e1e1e6;
+}
+
+.tagValue {
+  font-weight: bold;
+  color: white;
+}
+
+.tagBarContainer {
+  width: 100%;
+  height: 6px;
+  background: #2d2d3a;
+  border-radius: 3px;
+}
+
+.tagBarFill {
+  background: #5b4bf6;
+  border-radius: 3px;
+  height: 100%;
+}
