@@ -1,0 +1,172 @@
+/* src/app/[locale]/(dashboard)/dashboard/settings/page.module.css */
+
+.container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #e1e1e6;
+}
+
+/* --- Header --- */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #a1a1aa;
+  margin-bottom: 30px;
+}
+
+/* --- Layout Grid --- */
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+}
+
+/* --- Menu Lateral --- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.navItem {
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+  border-left: 3px solid transparent;
+}
+
+.navItem:hover {
+  background-color: #2d2d3a;
+  color: white;
+}
+
+/* Estado Ativo do Menu */
+.active {
+  background-color: #1e1b4b;
+  color: #818cf8;
+  font-weight: bold;
+  border-left-color: #6366f1;
+}
+
+.inactive {
+  background-color: transparent;
+  color: #a1a1aa;
+}
+
+/* --- Card de Conteúdo --- */
+.card {
+  background-color: #1e1e2d;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #2d2d3a;
+}
+
+.sectionTitle {
+  border-bottom: 1px solid #2d2d3a;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* --- Seção de Perfil --- */
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.changePhotoBtn {
+  background-color: #2d2d3a;
+  border: 1px solid #3f3f46;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.changePhotoBtn:hover {
+  background-color: #3f3f46;
+  border-color: #52525b;
+}
+
+/* --- Formulário --- */
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  color: #a1a1aa;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  background-color: #161822;
+  border: 1px solid #2d2d3a;
+  border-radius: 6px;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #5b4bf6;
+}
+
+.input:disabled {
+  color: #71717a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.saveBtn {
+  background-color: #5b4bf6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.saveBtn:hover {
+  background-color: #4c3ee0;
+}
