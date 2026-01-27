@@ -1,3 +1,6 @@
+/* login.module.css */
+
+/* --- Layout Base --- */
 .container {
   min-height: 100vh;
   display: flex;
@@ -29,6 +32,7 @@
   font-size: 0.9rem;
 }
 
+/* --- Card --- */
 .card {
   width: 100%;
   max-width: 450px;
@@ -53,6 +57,19 @@
   margin-bottom: 25px;
 }
 
+/* --- Mensagem de Erro (Extraído do inline) --- */
+.errorBox {
+  background-color: rgba(255, 68, 68, 0.1);
+  color: #ff4444;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+/* --- Formulário --- */
 .form { display: flex; flex-direction: column; gap: 15px; }
 
 .inputGroup { display: flex; flex-direction: column; gap: 6px; }
@@ -73,9 +90,11 @@
 }
 
 .input:focus { border-color: #5b4bf6; }
+.input:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .iconLeft { position: absolute; left: 12px; color: #52525b; }
 
+/* --- Botão e Spinner --- */
 .submitButton {
   background-color: #5b4bf6;
   color: white;
@@ -86,9 +105,45 @@
   cursor: pointer;
   margin-top: 10px;
   transition: 0.2s;
+  position: relative; /* Necessário para layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .submitButton:hover { background-color: #4c3ee0; }
 
+/* Estado Loading do Botão */
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background-color: #5b4bf6; /* Mantém a cor original */
+}
+
+/* Wrapper do conteúdo do spinner (texto + icone) */
+.spinnerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* O círculo giratório */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animação (Extraída do style jsx) */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Footer --- */
 .footer { text-align: center; margin-top: 20px; font-size: 0.9rem; color: #a1a1aa; }
 .link { color: #5b4bf6; text-decoration: none; font-weight: bold; }
