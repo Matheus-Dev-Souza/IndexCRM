@@ -70,6 +70,7 @@ export async function registerAction(formData: FormData) {
 
 // --- LOGOUT ---
 export async function logoutAction() {
-  (await cookies()).delete('session_token')
+  const cookieStore = cookies()
+  cookieStore.delete('session_token')
   redirect('/pt-BR/sign-in')
 }
