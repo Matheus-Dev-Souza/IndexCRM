@@ -1,0 +1,93 @@
+/* src/app/[locale]/(dashboard)/dashboard/integrations/page.module.css */
+
+.container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.subtitle {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.createBtn {
+  background-color: #5b4bf6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.createBtn:hover {
+  background-color: #4c3ee0;
+}
+
+/* --- Grid --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* --- Card --- */
+.card {
+  background-color: #0f172a;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #5b4bf6;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  flex-shrink: 0; /* Garante que o ícone não amasse */
+}
+
+.cardTitle {
+  color: white;
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cardMeta {
+  color: #64748b;
+  font-size: 0.8rem;
+}
