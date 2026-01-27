@@ -1,0 +1,17 @@
+/* src/app/[locale]/(dashboard)/layout.module.css */
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #13131f;
+  color: #e1e1e6;
+}
+
+.mainContent {
+  flex: 1;
+  /* Importante: Esta margem deve ser igual à largura do Sidebar */
+  margin-left: 260px; 
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
