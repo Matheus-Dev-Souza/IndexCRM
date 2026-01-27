@@ -1,7 +1,11 @@
 // src/app/[locale]/(dashboard)/dashboard/page.tsx
+import Link from 'next/link';
 import styles from './page.module.css';
 
-export default function DashboardPage() {
+// Precisamos pegar o locale (idioma) para montar os links corretamente
+export default async function DashboardPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
   return (
     <div className={styles.container}>
       
@@ -33,30 +37,31 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* GRID DE FUNCIONALIDADES */}
+      {/* GRID DE FUNCIONALIDADES (Links para as páginas) */}
       <h2 style={{ fontSize: '1.2rem', marginBottom: '20px', color: 'white' }}>Acesso Rápido</h2>
+      
       <div className={styles.featuresGrid}>
         
-        {/* CARD 1 */}
-        <div className={styles.featureCard}>
+        {/* CARD 1 -> Vai para LEADS */}
+        <Link href={`/${locale}/dashboard/leads`} className={styles.featureCard}>
           <div className={styles.cardIcon}>👥</div>
-          <div className={styles.cardTitle}>Gerenciar Leads</div>
+          <span className={styles.cardTitle}>Gerenciar Leads</span>
           <p className={styles.cardDesc}>Visualize e mova seus cards no Kanban.</p>
-        </div>
+        </Link>
 
-        {/* CARD 2 */}
-        <div className={styles.featureCard}>
+        {/* CARD 2 -> Vai para FUNIS */}
+        <Link href={`/${locale}/dashboard/funnels`} className={styles.featureCard}>
           <div className={styles.cardIcon}>🚀</div>
-          <div className={styles.cardTitle}>Novo Funil</div>
+          <span className={styles.cardTitle}>Novo Funil</span>
           <p className={styles.cardDesc}>Crie uma nova estratégia de vendas.</p>
-        </div>
+        </Link>
 
-        {/* CARD 3 */}
-        <div className={styles.featureCard}>
+        {/* CARD 3 -> Vai para RELATÓRIOS */}
+        <Link href={`/${locale}/dashboard/reports`} className={styles.featureCard}>
           <div className={styles.cardIcon}>📊</div>
-          <div className={styles.cardTitle}>Relatórios</div>
+          <span className={styles.cardTitle}>Relatórios</span>
           <p className={styles.cardDesc}>Analise o desempenho da sua equipe.</p>
-        </div>
+        </Link>
 
       </div>
     </div>

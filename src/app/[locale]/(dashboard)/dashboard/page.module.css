@@ -1,4 +1,5 @@
-/* Container principal do conteúdo */
+/* src/app/[locale]/(dashboard)/dashboard/page.module.css */
+
 .container {
   padding: 30px;
   color: #e1e1e6;
@@ -7,32 +8,7 @@
   margin: 0 auto;
 }
 
-/* Alerta Verde */
-.alertBanner {
-  background-color: #008f39;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.alertBtn {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  padding: 6px 16px;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 0.8rem;
-}
-
-/* Header (Título e Ações) */
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -41,18 +17,13 @@
 }
 
 .projectSelector {
-  background: transparent;
   color: white;
-  border: none;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  margin: 0;
 }
 
-/* Linha de Cards de Status */
+/* Stats Row */
 .statsRow {
   display: flex;
   gap: 20px;
@@ -76,42 +47,25 @@
   font-size: 1.2rem;
 }
 
-/* Área do Gráfico */
-.chartArea {
-  background-color: #13131f; /* Fundo escuro igual ao body para mesclar */
-  height: 250px;
-  margin-bottom: 40px;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #2d2d3a;
-}
-
-/* Linhas do gráfico para efeito visual */
-.chartLine {
-  position: absolute;
-  left: 0; right: 0;
-  height: 1px;
-  background-color: #2d2d3a;
-}
-
-/* Grid de Funcionalidades (Botões Grandes) */
+/* Grid de Funcionalidades */
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
+/* Card de Funcionalidade (Agora interativo) */
 .featureCard {
-  background-color: #1e1e2d; /* Cor levemente mais clara que o fundo */
+  background-color: #1e1e2d;
   padding: 25px;
   border-radius: 12px;
-  border: 1px solid #2d2d3a; /* Borda sutil */
+  border: 1px solid #2d2d3a;
   transition: transform 0.2s, border-color 0.2s;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  text-decoration: none; /* Remove sublinhado do Link */
+  display: block; /* Garante que o Link ocupe o espaço */
 }
 
 .featureCard:hover {
@@ -138,19 +92,12 @@
   font-size: 1.05rem;
   margin-bottom: 8px;
   color: white;
+  display: block;
 }
 
 .cardDesc {
   color: #a1a1aa;
   font-size: 0.85rem;
   line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-/* Ícones pequenos no rodapé do card */
-.cardFooterIcons {
-  display: flex;
-  gap: 12px;
-  color: #71717a;
-  font-size: 1.1rem;
+  margin: 0;
 }
