@@ -1,0 +1,139 @@
+/* src/app/[locale]/(dashboard)/dashboard/pages/page.module.css */
+
+.container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #e1e1e6;
+}
+
+/* --- Header --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.subtitle {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.createBtn {
+  background-color: #5b4bf6;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.createBtn:hover {
+  background-color: #4c3ee0;
+}
+
+/* --- Grid --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* --- Card --- */
+.card {
+  background-color: #1e1e2d;
+  border-radius: 12px;
+  border: 1px solid #2d2d3a;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #5b4bf6;
+}
+
+/* Thumbnail (Topo do Card) */
+.thumbnail {
+  height: 160px;
+  background-color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #2d2d3a;
+  font-size: 3rem;
+  color: #3b82f6; /* Azul suave para o ícone */
+}
+
+/* Corpo do Card */
+.cardBody {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.optionsIcon {
+  color: #a1a1aa;
+  font-size: 1.2rem;
+  line-height: 0.8;
+}
+
+.cardPath {
+  font-size: 0.8rem;
+  color: #6366f1;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Ações (Botões inferiores) */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Empurra para o fundo se o título for grande */
+}
+
+.actionBtn {
+  flex: 1;
+  background-color: #2d2d3a;
+  border: 1px solid transparent;
+  color: #e1e1e6;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background-color: #3f3f46;
+  border-color: #52525b;
+  color: white;
+}
