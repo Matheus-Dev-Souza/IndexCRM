@@ -1,4 +1,6 @@
+// src/app/[locale]/(dashboard)/dashboard/funnels/page.tsx
 import Link from "next/link";
+import styles from "./page.module.css";
 
 export default function FunnelsPage() {
   // Simulação de dados (depois buscaremos do Java via Server Action)
@@ -9,24 +11,68 @@ export default function FunnelsPage() {
   ];
 
   return (
-    <div style={{ padding: '30px', maxWidth: '1400px', margin: '0 auto' }}>
+    <div className={styles.container}>
       
-      {/* Banner de Aviso (Padrão em todas as telas) */}
-      <div style={{ background: '#008f39', padding: '12px', borderRadius: '6px', color: 'white', marginBottom: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-         <span style={{ fontSize: '0.9rem' }}>📢 Atenção: Novas automações de funil disponíveis.</span>
-         <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: 'white', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 'bold' }}>VER NOVIDADES</button>
+      {/* Banner de Aviso */}
+      <div className={styles.banner}>
+         <span className={styles.bannerText}>📢 Atenção: Novas automações de funil disponíveis.</span>
+         <button className={styles.bannerBtn}>VER NOVIDADES</button>
       </div>
 
       {/* Cabeçalho */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+      <div className={styles.header}>
         <div>
-           <h1 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold' }}>Funis de Vendas</h1>
-           <p style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Gerencie suas etapas e processos comerciais</p>
+           <h1 className={styles.title}>Funis de Vendas</h1>
+           <p className={styles.subtitle}>Gerencie suas etapas e processos comerciais</p>
         </div>
-        <button style={{ background: '#5b4bf6', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'background 0.2s' }}>
+        <button className={styles.createBtn}>
           <span>+</span> CRIAR NOVO FUNIL
         </button>
       </div>
 
       {/* Grid de Funis */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+      <div className={styles.grid}>
+        
+        {funnels.map((funnel) => (
+          <div key={funnel.id} className={styles.card}>
+             
+             {/* Topo do Card */}
+             <div className={styles.cardHeader}>
+                <div>
+                   <h3 className={styles.cardTitle}>{funnel.name}</h3>
+                   <span className={styles.cardSubtitle}>{funnel.stages} etapas configuradas</span>
+                </div>
+                <div className={styles.cardIcon}>⚙️</div>
+             </div>
+
+             {/* Corpo do Card (Métricas Rápidas) */}
+             <div className={styles.cardBody}>
+                <div>
+                   <span className={styles.statLabel}>Leads Ativos</span>
+                   <span className={styles.statValue}>{funnel.activeLeads}</span>
+                </div>
+                <div>
+                   <span className={styles.statLabel}>Valor em Aberto</span>
+                   <span className={styles.statValueMoney}>
+                     {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(funnel.totalValue)}
+                   </span>
+                </div>
+             </div>
+
+             {/* Rodapé do Card */}
+             <div className={styles.cardFooter}>
+                <span className={styles.cardFooterText}>ACESSAR KANBAN →</span>
+             </div>
+          </div>
+        ))}
+
+        {/* Card de "Adicionar Novo" */}
+        <div className={styles.newCard}>
+           <div className={styles.newCardIcon}>+</div>
+           <span className={styles.newCardText}>Novo Funil</span>
+        </div>
+
+      </div>
+    </div>
+  );
+}

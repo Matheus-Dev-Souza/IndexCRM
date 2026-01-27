@@ -1,0 +1,200 @@
+/* src/app/[locale]/(dashboard)/dashboard/funnels/page.module.css */
+
+.container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- Banner de Aviso --- */
+.banner {
+  background-color: #008f39;
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bannerText {
+  font-size: 0.9rem;
+}
+
+.bannerBtn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.bannerBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Cabeçalho --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.subtitle {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.createBtn {
+  background-color: #5b4bf6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.createBtn:hover {
+  background-color: #4c3ee0;
+}
+
+/* --- Grid de Cards --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+/* Card de Funil Normal */
+.card {
+  background-color: #1e1e2d;
+  border-radius: 10px;
+  border: 1px solid #2d2d3a;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #5b4bf6;
+}
+
+.cardHeader {
+  padding: 20px;
+  border-bottom: 1px solid #2d2d3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardTitle {
+  color: white;
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.cardSubtitle {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.cardIcon {
+  background-color: #2d2d3a;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a1a1aa;
+}
+
+.cardBody {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.statLabel {
+  display: block;
+  color: #a1a1aa;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.statValue {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.statValueMoney {
+  color: #22c55e;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cardFooter {
+  background-color: #161822;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #2d2d3a;
+}
+
+.cardFooterText {
+  color: #5b4bf6;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Card de Novo Funil (Pontilhado) */
+.newCard {
+  border: 2px dashed #2d2d3a;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  cursor: pointer;
+  color: #64748b;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.newCard:hover {
+  border-color: #5b4bf6;
+  color: #5b4bf6;
+}
+
+.newCardIcon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.newCardText {
+  font-weight: 600;
+}
