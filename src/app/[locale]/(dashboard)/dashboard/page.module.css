@@ -8,7 +8,7 @@
   margin: 0 auto;
 }
 
-/* Header */
+/* --- Header --- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -17,13 +17,26 @@
 }
 
 .projectSelector {
+  background: transparent;
   color: white;
+  border: none;
   font-size: 1.5rem;
   font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin: 0;
 }
 
-/* Stats Row */
+.headerActions {
+  display: flex;
+  gap: 20px;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+}
+
+/* --- Stats Row (Cards do topo) --- */
 .statsRow {
   display: flex;
   gap: 20px;
@@ -47,14 +60,20 @@
   font-size: 1.2rem;
 }
 
-/* Grid de Funcionalidades */
+/* --- Acesso Rápido (Grid) --- */
+.sectionTitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* Card de Funcionalidade (Agora interativo) */
+/* Card Interativo (Link) */
 .featureCard {
   background-color: #1e1e2d;
   padding: 25px;
@@ -64,8 +83,8 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  text-decoration: none; /* Remove sublinhado do Link */
-  display: block; /* Garante que o Link ocupe o espaço */
+  text-decoration: none; /* Remove sublinhado do link */
+  display: block;
 }
 
 .featureCard:hover {
@@ -100,4 +119,38 @@
   font-size: 0.85rem;
   line-height: 1.5;
   margin: 0;
+}
+/* ... (seu código anterior) */
+
+/* Textos dos Cards de Status */
+.statLabel {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  display: block; /* Garante que fique em cima do valor */
+  margin-bottom: 5px;
+}
+
+/* Barra de Progresso (Container) */
+.progressContainer {
+  width: 80px;
+  height: 6px;
+  background-color: #2d2d3a;
+  border-radius: 3px;
+  overflow: hidden; /* Garante que a barra interna não vase */
+}
+
+/* Barra de Progresso (Preenchimento) */
+.progressFill {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 3px;
+  transition: width 0.5s ease-in-out; /* Efeito suave ao carregar */
+}
+
+/* Contador ao lado da barra */
+.statCount {
+  color: white;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }

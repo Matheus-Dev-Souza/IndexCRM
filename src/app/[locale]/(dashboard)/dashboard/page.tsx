@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import styles from './page.module.css';
 
-// Precisamos pegar o locale (idioma) para montar os links corretamente
+// Precisamos tipar o params como uma Promise para versões recentes do Next.js
 export default async function DashboardPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
@@ -15,30 +15,45 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
            Dashboard Geral
         </h1>
         
-        <div style={{ display: 'flex', gap: '20px', color: '#a1a1aa', fontSize: '0.9rem' }}>
+        <div className={styles.headerActions}>
           <span>🎓 EAD</span>
           <span>❓ Ajuda</span>
         </div>
       </div>
 
-      {/* ESTATÍSTICAS RÁPIDAS */}
+{/* ESTATÍSTICAS RÁPIDAS */}
       <div className={styles.statsRow}>
+        
+        {/* Card 1: Vendas */}
         <div className={styles.statCard}>
-          <span style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Vendas Hoje</span>
-          <span className={styles.statValue}>R$ 0,00</span>
-        </div>
-
-        <div className={styles.statCard}>
-          <span style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Leads Ativos</span>
-          <div style={{ width: '80px', height: '6px', background: '#2d2d3a', borderRadius: '3px' }}>
-            <div style={{ width: '20%', height: '100%', background: '#3b82f6', borderRadius: '3px' }}></div>
+          <div>
+            <span className={styles.statLabel}>Vendas Hoje</span>
+            <span className={styles.statValue}>R$ 0,00</span>
           </div>
-          <span style={{ color: 'white', marginLeft: '10px' }}>20</span>
         </div>
-      </div>
 
+        {/* Card 2: Leads (Com barra de progresso) */}
+        <div className={styles.statCard}>
+          <div>
+             <span className={styles.statLabel}>Leads Ativos</span>
+             <div style={{ display: 'flex', alignItems: 'center' }}>
+                
+                <div className={styles.progressContainer}>
+                  {/* A largura continua inline pois vem do Banco de Dados */}
+                  <div 
+                    className={styles.progressFill} 
+                    style={{ width: '20%' }} 
+                  />
+                </div>
+                
+                <span className={styles.statCount}>20</span>
+             </div>
+          </div>
+        </div>
+
+      </div>
       {/* GRID DE FUNCIONALIDADES (Links para as páginas) */}
-      <h2 style={{ fontSize: '1.2rem', marginBottom: '20px', color: 'white' }}>Acesso Rápido</h2>
+      <h2 className={styles.sectionTitle}>Acesso Rápido</h2>
       
       <div className={styles.featuresGrid}>
         
