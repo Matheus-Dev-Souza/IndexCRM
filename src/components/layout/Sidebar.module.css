@@ -107,3 +107,8 @@
   font-size: 0.9rem;
   width: 100%;
 }
+
+.logoutBtn:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}

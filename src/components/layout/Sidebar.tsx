@@ -73,6 +73,7 @@ const menuItems = [
 
         {/* BOTÃO DE SAIR */}
         <button 
+          type="button"
           onClick={handleLogout}
           className={styles.logoutBtn}>
           <Icons.Logout />

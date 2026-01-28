@@ -69,8 +69,16 @@ export async function registerAction(formData: FormData) {
 }
 
 // --- LOGOUT ---
+// ---  export async function logoutAction() { const cookieStore = cookies() cookieStore.delete('session_token') redirect('/pt-BR/sign-in')} --- //
+
 export async function logoutAction() {
-  const cookieStore = cookies()
-  cookieStore.delete('session_token')
-  redirect('/pt-BR/sign-in')
+  const cookieStore = await cookies();
+  
+  // Tenta apagar todos os possíveis nomes de cookie para garantir
+  cookieStore.delete('session');
+  cookieStore.delete('token');
+  cookieStore.delete('JSESSIONID');
+  
+  // Retorna sucesso para o front-end saber que pode redirecionar
+  return { success: true };
 }
