@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useParams } from "next/navigation"; // <--- Importamos useParams
+import { logoutAction } from "@/actions/auth-actions";
 import styles from "./Sidebar.module.css";
 
 // Ícones SVG (Mantive os mesmos)
@@ -19,6 +20,10 @@ export function Sidebar() {
   const pathname = usePathname();
   const params = useParams(); 
   const locale = params.locale || 'pt-BR'; // <--- O SEGREDO: Pega 'pt-BR' ou 'en' da URL
+// Função intermediária para chamar o logout
+  const handleLogout = async () => {
+    await logoutAction();
+  };
 
 const menuItems = [
     { name: "Dashboard", path: `/${locale}/dashboard`, icon: Icons.Dashboard },
@@ -65,7 +70,11 @@ const menuItems = [
             <p>Admin</p>
           </div>
         </div>
-        <button className={styles.logoutBtn}>
+
+        {/* BOTÃO DE SAIR */}
+        <button 
+          onClick={handleLogout}
+          className={styles.logoutBtn}>
           <Icons.Logout />
           Sair
         </button>

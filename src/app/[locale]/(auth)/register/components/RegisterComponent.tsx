@@ -37,7 +37,7 @@ export default function RegisterComponent() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.logo}>Sell<span>Flux</span>.</h1>
+        <h1 className={styles.logo}>Index<span>CRM</span>.</h1>
       </div>
 
       <div className={styles.card}>

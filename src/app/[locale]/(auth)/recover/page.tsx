@@ -7,7 +7,7 @@ export default function RecoverPage() {
       {/* HEADER */}
       <div className={styles.header}>
         <h1 className={styles.logo}>
-          Sell<span>Flux</span>.
+          Index<span>CRM</span>.
         </h1>
         <p className={styles.subtitle}>Recupere o acesso à sua conta</p>
       </div>
