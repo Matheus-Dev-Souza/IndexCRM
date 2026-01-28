@@ -1,0 +1,147 @@
+/* src/components/leads/NewLeadModal.module.css */
+
+/* O Card que serve de Gatilho (Botão na Dashboard) */
+.triggerCard {
+  background: #1e1e2d;
+  padding: 20px;
+  borderRadius: 8px;
+  border: 1px solid #2d2d3a;
+  display: flex;
+  justifyContent: space-between;
+  alignItems: center;
+  cursor: pointer;
+  marginBottom: 15px;
+  transition: border-color 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.triggerCard:hover {
+  border-color: #5b4bf6;
+}
+
+.triggerTitle { color: white; margin-bottom: 4px; font-size: 0.95rem; font-weight: 600; }
+.triggerDesc { color: #a1a1aa; font-size: 0.8rem; margin: 0; }
+.triggerIcon { color: #5b4bf6; font-size: 1.2rem; }
+
+/* Overlay (Fundo Escuro) */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+/* Modal Box */
+.modal {
+  background: #101014; /* Fundo bem escuro */
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  border: 1px solid #27272a;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #27272a;
+}
+
+.title { color: white; font-size: 1.1rem; font-weight: 600; margin: 0; }
+.closeBtn { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 1.2rem; }
+.closeBtn:hover { color: white; }
+
+/* Body */
+.body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+
+.inputGroup { display: flex; flex-direction: column; gap: 8px; }
+.label { color: #a1a1aa; font-size: 0.85rem; font-weight: 500; }
+
+.input {
+  background: #09090b;
+  border: 1px solid #27272a;
+  padding: 12px;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus { border-color: #5b4bf6; }
+
+/* Telefone com prefixo fixo */
+.phoneWrapper {
+  display: flex;
+  align-items: center;
+  background: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.prefix {
+  background: #18181b;
+  color: #a1a1aa;
+  padding: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-right: 1px solid #27272a;
+}
+
+.phoneInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 12px;
+  outline: none;
+}
+
+/* Footer */
+.footer {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #27272a;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.cancelBtn:hover { color: white; }
+
+.createBtn {
+  background: #5b4bf6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.createBtn:hover { background: #4c3ee0; }
+.createBtn:disabled { opacity: 0.7; cursor: not-allowed; }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useParams, useRouter } from "next/navigation"; // <--- Importamos useParams
+import { usePathname, useParams } from "next/navigation"; // <--- Importamos useParams
 import { logoutAction } from "@/actions/auth-actions";
 import styles from "./Sidebar.module.css";
 
@@ -22,20 +22,7 @@ export function Sidebar() {
   const locale = params.locale || 'pt-BR'; // <--- O SEGREDO: Pega 'pt-BR' ou 'en' da URL
 // Função intermediária para chamar o logout
   const handleLogout = async () => {
-    try {
-      // 1️⃣ Limpa cookies no servidor
-      await logoutAction();
-
-      // 2️⃣ Redireciona no cliente
-      router.replace('/pt-BR/sign-in');
-
-      // Alternativa mais agressiva (se algum cache insistir):
-      // window.location.href = '/pt-BR/sign-in';
-
-    } catch (error) {
-      console.error('Erro ao sair:', error);
-      router.replace('/pt-BR/sign-in');
-    }
+    await logoutAction();
   };
 
 const menuItems = [
@@ -86,9 +73,9 @@ const menuItems = [
 
         {/* BOTÃO DE SAIR */}
         <button 
+          type="button"
           onClick={handleLogout}
-          className={styles.logoutBtn}
-          type="button">
+          className={styles.logoutBtn}>
           <Icons.Logout />
           Sair
         </button>

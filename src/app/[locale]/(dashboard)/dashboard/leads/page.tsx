@@ -1,8 +1,10 @@
 import { getLeadsAction } from "@/actions/client-actions";
-import { formatCurrency, formatDate } from "@/lib/utils";
+import { formatCurrency } from "@/lib/utils";
 import styles from "./page.module.css";
+// 1. IMPORTANTE: Importamos o modal que criamos
+import NewLeadModal from "@/components/leads/NewLeadModal";
 
-// 1. Definimos a tipagem do que vem do Java
+// 2. Mantemos a tipagem
 interface Lead {
   id: string;
   customerName: string;
@@ -13,7 +15,7 @@ interface Lead {
   };
 }
 
-// Componente Visual de Card de Ação (Modularizado)
+// 3. Mantemos o ActionCard para os OUTROS botões (Remover, Importar, Exportar)
 const ActionCard = ({ icon, title, desc }: { icon: string, title: string, desc: string }) => (
   <div className={styles.actionCard}>
     <div>
@@ -25,13 +27,13 @@ const ActionCard = ({ icon, title, desc }: { icon: string, title: string, desc: 
 );
 
 export default async function LeadsPage() {
-  // O ideal é tipar o retorno da action, mas aqui forçamos a tipagem do array
+  // Busca os dados do Java
   const leads: Lead[] = await getLeadsAction(); 
 
   return (
     <div className={styles.container}>
       
-      {/* COLUNA ESQUERDA: LISTA */}
+      {/* COLUNA ESQUERDA: LISTA DE LEADS */}
       <div>
         <div className={styles.header}>
           <h1 className={styles.title}>Leads</h1>
@@ -42,7 +44,6 @@ export default async function LeadsPage() {
         </div>
 
         <div className={styles.list}>
-          {/* 2. Aqui usamos a interface no lugar do 'any' */}
           {leads.length > 0 ? leads.map((lead: Lead) => (
             <div key={lead.id} className={styles.leadCard}>
               <div className={styles.leadInfo}>
@@ -69,7 +70,12 @@ export default async function LeadsPage() {
       {/* COLUNA DIREITA: AÇÕES */}
       <div>
         <h3 className={styles.sidebarTitle}>Ações Rápidas</h3>
-        <ActionCard icon="➕" title="Adicionar lead" desc="Faça o cadastro manual" />
+        
+        {/* 4. AQUI ESTÁ A MUDANÇA: */}
+        {/* Substituímos o ActionCard estático pelo Componente do Modal */}
+        <NewLeadModal />
+        
+        {/* Os outros botões continuam estáticos por enquanto */}
         <ActionCard icon="🗑️" title="Remover leads" desc="Exclua leads em massa" />
         <ActionCard icon="📥" title="Importações" desc="Visualize suas importações" />
         <ActionCard icon="📤" title="Exportar leads" desc="Baixe sua lista em CSV" />
