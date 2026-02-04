@@ -3,6 +3,7 @@ import { formatCurrency } from "@/lib/utils";
 import styles from "./page.module.css";
 // 1. IMPORTANTE: Importamos o modal que criamos
 import NewLeadModal from "@/components/leads/NewLeadModal";
+import  LeadRowItem  from "@/components/leads/LeadRowItem";
 
 // 2. Mantemos a tipagem
 interface Lead {
@@ -77,7 +78,8 @@ export default async function LeadsPage() {
         
         {/* Os outros botões continuam estáticos por enquanto */}
         <ActionCard icon="🗑️" title="Remover leads" desc="Exclua leads em massa" />
-        <ActionCard icon="📥" title="Importações" desc="Visualize suas importações" />
+        <LeadRowItem />
+       {/* <ActionCard icon="📥" title="Importações" desc="Visualize suas importações" /> */}
         <ActionCard icon="📤" title="Exportar leads" desc="Baixe sua lista em CSV" />
       </div>
 
