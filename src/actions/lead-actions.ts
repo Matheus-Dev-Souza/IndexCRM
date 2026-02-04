@@ -1,14 +1,12 @@
-// src/actions/lead-actions.ts
 'use server';
 
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-// Define a URL base da API (garanta que o .env.local esteja correto)
+// URL Base (Render ou Local)
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://indexcrm-crm-api.onrender.com";
-const LEADS_ENDPOINT = `${BASE_URL}/api/sales/leads`;
 
-// --- BUSCAR LEADS (A função que estava faltando) ---
+// --- 1. BUSCAR LEADS ---
 export async function getLeadsAction() {
   const cookieStore = await cookies();
   const token = cookieStore.get('session_token')?.value;
@@ -16,50 +14,77 @@ export async function getLeadsAction() {
   if (!token) return [];
 
   try {
-    const response = await fetch(LEADS_ENDPOINT, {
+    const response = await fetch(`${BASE_URL}/api/sales/leads`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      cache: 'no-store' // Dados sempre frescos
+      cache: 'no-store'
     });
 
-    if (!response.ok) {
-      console.error("Erro ao buscar leads:", response.status);
-      return [];
-    }
+    if (!response.ok) return [];
+    
+    // Mapeia os dados do Java para o formato que o Front espera (garantia)
+    const data = await response.json();
+    return data.map((lead: any) => ({
+      id: lead.id,
+      customerName: lead.customerName || lead.name || "Sem Nome", // Fallback
+      email: lead.email,
+      phone: lead.phone,
+      value: lead.value,
+      createdAt: lead.createdAt,
+      tags: lead.tags || []
+    }));
 
-    return await response.json();
   } catch (error) {
-    console.error("Erro de conexão ao buscar leads:", error);
+    console.error("Erro ao buscar leads:", error);
     return [];
   }
 }
 
-// --- CRIAR LEAD ---
+// --- 2. CRIAR LEAD (COM BUSCA AUTOMÁTICA DE STAGE) ---
 export async function createLeadAction(formData: FormData) {
   const cookieStore = await cookies();
   const token = cookieStore.get('session_token')?.value;
 
-  if (!token) {
-    return { error: "Você precisa estar logado." };
+  if (!token) return { error: "Sessão expirada. Faça login novamente." };
+
+  // PASSO A: Descobrir qual é o ID da primeira fase do funil
+  let stageId = 1; // Fallback perigoso, vamos tentar achar o real
+  try {
+    const pipelineRes = await fetch(`${BASE_URL}/api/sales/pipelines`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+      cache: 'no-store'
+    });
+    
+    if (pipelineRes.ok) {
+      const pipelines = await pipelineRes.json();
+      // Pega o primeiro funil -> primeira fase
+      if (pipelines.length > 0 && pipelines[0].stages?.length > 0) {
+        stageId = pipelines[0].stages[0].id;
+      }
+    }
+  } catch (e) {
+    console.error("Erro ao buscar pipeline padrão:", e);
   }
 
+  // PASSO B: Montar o Objeto para o Java
   const payload = {
-    customerName: formData.get("name"), // O Java espera 'customerName'
+    customerName: formData.get("name"),
     email: formData.get("email"),
     phone: formData.get("phone"),
-    // Campos padrão exigidos pelo Java
-    title: `Lead: ${formData.get("name")}`,
-    description: "Criado via Dashboard",
+    // Campos obrigatórios do Java que o modal não tem (preenchemos automático)
+    title: `Oportunidade: ${formData.get("name")}`, 
+    description: "Criado via Dashboard Web",
     value: 0.0,
     priority: "MEDIUM",
-    stageId: 1 // ID da fase padrão
+    stageId: stageId // Usa o ID real que descobrimos
   };
 
+  // PASSO C: Enviar para o Java
   try {
-    const response = await fetch(LEADS_ENDPOINT, {
+    const response = await fetch(`${BASE_URL}/api/sales/leads`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,15 +94,16 @@ export async function createLeadAction(formData: FormData) {
     });
 
     if (!response.ok) {
-      const text = await response.text();
-      return { error: `Erro API: ${text}` };
+      const errorText = await response.text();
+      return { error: `Erro do servidor: ${errorText}` };
     }
 
-    revalidatePath("/dashboard/leads"); // Atualiza a tela
+    // SUCESSO: Força a atualização da lista na tela
+    revalidatePath("/[locale]/dashboard/leads", "page"); 
+    
     return { success: true };
 
   } catch (error) {
-    console.error(error);
-    return { error: "Falha na conexão com a API." };
+    return { error: "Falha de conexão com a API." };
   }
 }
