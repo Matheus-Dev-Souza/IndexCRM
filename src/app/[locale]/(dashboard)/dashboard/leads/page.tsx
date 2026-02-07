@@ -7,6 +7,7 @@ import NewLeadModal from "@/components/leads/NewLeadModal";
 import { LeadRowItem } from "@/components/leads/LeadRowItem"; // <--- Componente do Card
 import ImportModal from "@/components/leads/ImportModal";     // <--- Componente de Importação
 import RemoveLeadModal from "@/components/leads/RemoveLeadModal";
+import ExportLeadModal from "@/components/leads/ExportLeadModal";
 
 // Tipagem atualizada para bater com o LeadRowItem
 interface Lead {
@@ -76,7 +77,7 @@ export default async function LeadsPage() {
         <ImportModal />
         
         {/* 4. Exportar */}
-        <ActionCard icon="📤" title="Exportar leads" desc="Baixe sua lista em CSV" />
+        <ExportLeadModal />
       </div>
 
     </div>
