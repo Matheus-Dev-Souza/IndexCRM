@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import NewLeadModal from "@/components/leads/NewLeadModal";
 import { LeadRowItem } from "@/components/leads/LeadRowItem"; // <--- Componente do Card
 import ImportModal from "@/components/leads/ImportModal";     // <--- Componente de Importação
+import RemoveLeadModal from "@/components/leads/RemoveLeadModal";
 
 // Tipagem atualizada para bater com o LeadRowItem
 interface Lead {
@@ -70,8 +71,7 @@ export default async function LeadsPage() {
         <NewLeadModal />
         
         {/* 2. Remover Leads */}
-        <ActionCard icon="🗑️" title="Remover leads" desc="Exclua leads em massa" />
-        
+        <RemoveLeadModal />
         {/* 3. Importar (Componente Novo) */}
         <ImportModal />
         

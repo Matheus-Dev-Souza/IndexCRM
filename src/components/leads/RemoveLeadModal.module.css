@@ -1,0 +1,230 @@
+/* src/components/leads/RemoveLeadModal.module.css */
+
+/* --- Reaproveitando estrutura base do Modal --- */
+.triggerCard {
+  background: #1e1e2d;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #2d2d3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: border-color 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.triggerCard:hover { border-color: #ef4444; /* Vermelho para indicar remoção */ }
+.triggerTitle { color: white; margin-bottom: 4px; font-size: 0.95rem; font-weight: 600; }
+.triggerDesc { color: #a1a1aa; font-size: 0.8rem; margin: 0; }
+.triggerIcon { color: #a1a1aa; font-size: 1.2rem; }
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: flex-end; /* Modal desliza da direita */
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  background: #101014;
+  width: 100%;
+  max-width: 450px; /* Largura da barra lateral */
+  height: 100vh;
+  border-left: 1px solid #27272a;
+  box-shadow: -10px 0 25px rgba(0, 0, 0, 0.5);
+  animation: slideLeft 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* --- Header --- */
+.header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #27272a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title { color: white; font-size: 1.1rem; font-weight: 600; margin: 0; }
+.closeBtn { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 0.9rem; font-weight: bold; }
+.closeBtn:hover { color: white; }
+
+/* --- Body (Scrollável) --- */
+.body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sectionLabel {
+  display: block;
+  color: #e4e4e7;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.sectionDesc {
+  display: block;
+  color: #a1a1aa;
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+}
+
+/* Datas */
+.dateRow {
+  display: flex;
+  gap: 10px;
+  background: #5b4bf6; /* Fundo Roxo igual print */
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.dateInput {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 0.85rem;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+/* Muda a cor do ícone de calendário para branco */
+.dateInput::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+/* Toggle Sim/Não */
+.toggleGroup {
+  display: flex;
+  background: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.toggleBtn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.toggleBtn:hover { background: #18181b; }
+.activeToggle {
+  background: #27272a;
+  color: white;
+}
+
+/* Tags Dropdown */
+.tagSelectWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.tagSelect {
+  flex: 1;
+  background: #09090b;
+  border: 1px solid #27272a;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.addTagBtn {
+  background: #27272a;
+  color: white;
+  border: 1px solid #3f3f46;
+  width: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.selectedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tagBadge {
+  background: #27272a;
+  color: #e4e4e7;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #3f3f46;
+}
+
+.removeTag { cursor: pointer; color: #a1a1aa; }
+.removeTag:hover { color: #ef4444; }
+
+/* Advanced Section */
+.advancedBtn {
+  background: #09090b;
+  border: 1px solid #27272a;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  text-align: left;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 20px 24px;
+  border-top: 1px solid #27272a;
+}
+
+.removeBtn {
+  width: 100%;
+  background: #18181b;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.removeBtn:hover {
+  background: #ef4444;
+  color: white;
+}
