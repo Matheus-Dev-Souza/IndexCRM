@@ -9,6 +9,7 @@ import ImportModal from "@/components/leads/ImportModal";     // <--- Componente
 import RemoveLeadModal from "@/components/leads/RemoveLeadModal";
 import ExportLeadModal from "@/components/leads/ExportLeadModal";
 import AddTagsModal from "@/components/leads/AddTagsModal";
+import RemoveTagsModal from "@/components/leads/RemoveTagsModal";
 
 // Tipagem atualizada para bater com o LeadRowItem
 interface Lead {
@@ -80,8 +81,11 @@ export default async function LeadsPage() {
         {/* 4. Exportar */}
         <ExportLeadModal />
 
-         {/* 5. ADD ATG */}
+        {/* 5. ADD TaGs */}
         <AddTagsModal />
+
+        {/* 6. REMOVE TaGs */}
+        <RemoveTagsModal />
       </div>
 
     </div>
