@@ -1,0 +1,260 @@
+/* src/components/leads/CalculateLeadTempModal.module.css */
+
+/* --- Gatilho --- */
+.triggerCard {
+  background: #1e1e2d;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #2d2d3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: border-color 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.triggerCard:hover { border-color: #22c55e; /* Verde ao passar o mouse */ }
+.triggerTitle { color: white; margin-bottom: 4px; font-size: 0.95rem; font-weight: 600; }
+.triggerDesc { color: #a1a1aa; font-size: 0.8rem; margin: 0; }
+.triggerIcon { color: #a1a1aa; font-size: 1.2rem; }
+
+/* --- Modal & Overlay --- */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  background: #050508;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  border-left: 1px solid #27272a;
+  box-shadow: -10px 0 25px rgba(0, 0, 0, 0.5);
+  animation: slideLeft 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* --- Header --- */
+.header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title { color: white; font-size: 1.1rem; font-weight: 600; margin: 0; }
+.closeBtn { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.closeBtn:hover { color: white; }
+
+/* --- Body --- */
+.body {
+  padding: 0 24px 24px 24px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sectionLabel {
+  display: block;
+  color: #e4e4e7;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.sectionDesc {
+  display: block;
+  color: #a1a1aa;
+  font-size: 0.75rem;
+  margin-bottom: 15px;
+}
+
+/* --- Slider Complexo --- */
+.sliderWrapper {
+  position: relative;
+  height: 60px;
+  padding: 0 10px;
+  margin-top: 10px;
+}
+
+/* Barra de Fundo (Gradiente) */
+.sliderTrack {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ef4444 0%, #eab308 50%, #3b82f6 100%);
+  z-index: 1;
+}
+
+/* Labels dos Dias (0 e 180) */
+.sliderLabel {
+  position: absolute;
+  top: 45px;
+  font-size: 0.75rem;
+  color: #e4e4e7;
+  font-weight: 600;
+}
+.labelLeft { left: 0; }
+.labelRight { right: 0; }
+
+/* Inputs Range (Invisíveis mas funcionais) */
+.rangeInput {
+  position: absolute;
+  top: 18px; /* Alinha com o track */
+  left: 0;
+  width: 100%;
+  pointer-events: none; /* Permite clicar através */
+  appearance: none;
+  background: transparent;
+  z-index: 3;
+}
+
+/* Estilo do "Thumb" (A bolinha de arrastar) */
+.rangeInput::-webkit-slider-thumb {
+  pointer-events: all;
+  appearance: none;
+  width: 4px; /* Largura da "agulha" */
+  height: 24px;
+  background: #eab308; /* Amarelo */
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: -8px; /* Centralizar */
+  position: relative;
+  z-index: 4;
+}
+
+/* Tooltip do valor acima do thumb */
+.tooltip {
+  position: absolute;
+  top: 0;
+  background: #eab308;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* --- Legend List --- */
+.legendList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #e4e4e7;
+}
+
+.legendIcon { font-size: 1rem; }
+
+/* --- Tags Badges --- */
+.tagsRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tagBadge {
+  background: #18181b;
+  border: 1px solid #27272a;
+  color: #a1a1aa;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- Resultado (Grid) --- */
+.resultGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.resultCard {
+  text-align: center;
+}
+
+.resultTitle {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.resultValue {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 20px 24px;
+  border-top: 1px solid #27272a;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.addBtn {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+.addBtn:hover { opacity: 0.9; }
+
+.recalcBtn {
+  background: transparent;
+  color: #6366f1; /* Roxo */
+  border: 1px solid #27272a;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.recalcBtn:hover { border-color: #6366f1; }
