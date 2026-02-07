@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import styles from "./NewLeadModal.module.css"; // Reutilizando CSS do modal existente
+import styles from "./ImportModal.module.css";
 
 export default function ImportModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,23 +18,25 @@ export default function ImportModal() {
     if (!file) return;
     setLoading(true);
 
-    // Aqui conectaríamos com o Backend Java depois
-    // const formData = new FormData();
-    // formData.append("file", file);
-    // await fetch('/api/leads/import', { method: 'POST', body: formData });
-
     // Simulação de tempo de upload
     setTimeout(() => {
-      alert(`Arquivo "${file.name}" enviado para processamento!`);
+      alert(`Arquivo "${file.name}" enviado para processamento com sucesso!`);
       setLoading(false);
       setIsOpen(false);
       setFile(null);
     }, 2000);
   };
 
+  // Reseta estado ao fechar
+  const handleClose = () => {
+    setIsOpen(false);
+    setFile(null);
+    setLoading(false);
+  };
+
   return (
     <>
-      {/* O GATILHO (Card lateral) */}
+      {/* 1. GATILHO (Card lateral) */}
       <div className={styles.triggerCard} onClick={() => setIsOpen(true)}>
         <div>
           <h4 className={styles.triggerTitle}>Importações</h4>
@@ -43,67 +45,66 @@ export default function ImportModal() {
         <div className={styles.triggerIcon}>📥</div>
       </div>
 
-      {/* O MODAL */}
+      {/* 2. MODAL CENTRALIZADO */}
       {isOpen && (
         <div className={styles.overlay} onClick={(e) => {
-             if (e.target === e.currentTarget) setIsOpen(false)
+             if (e.target === e.currentTarget) handleClose();
         }}>
-          <div className={styles.modal} style={{ maxWidth: '600px' }}>
+          <div className={styles.modal}>
+            
+            {/* Header */}
             <div className={styles.header}>
               <h3 className={styles.title}>Importar Leads (CSV)</h3>
-              <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>✕</button>
+              <button className={styles.closeBtn} onClick={handleClose}>✕</button>
             </div>
 
+            {/* Body */}
             <div className={styles.body}>
-              <p style={{ color: '#a1a1aa', fontSize: '0.9rem', lineHeight: '1.5' }}>
+              <p className={styles.description}>
                 Selecione um arquivo <strong>.csv</strong> ou <strong>.xlsx</strong> para importar leads em massa.
-                Certifique-se de que o arquivo tenha colunas como <em>Nome, Email e Telefone</em>.
+                <br />Certifique-se de que o arquivo tenha colunas como <em>Nome, Email e Telefone</em>.
               </p>
 
-              {/* Área de Upload */}
-              <div style={{
-                border: '2px dashed #2d2d3a',
-                borderRadius: '8px',
-                padding: '30px',
-                textAlign: 'center',
-                background: '#09090b',
-                cursor: 'pointer'
-              }}>
+              {/* Área de Upload Customizada */}
+              <label htmlFor="file-upload" className={styles.uploadArea}>
+                <span className={styles.uploadIcon}>📂</span>
                 <input 
+                  id="file-upload"
                   type="file" 
                   accept=".csv, .xlsx" 
                   onChange={handleFileChange}
-                  style={{ display: 'none' }} 
-                  id="file-upload"
+                  className={styles.hiddenInput}
                 />
-                <label htmlFor="file-upload" style={{ cursor: 'pointer', display: 'block' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '10px' }}>📂</div>
-                  {file ? (
-                    <span style={{ color: '#5b4bf6', fontWeight: 'bold' }}>{file.name}</span>
-                  ) : (
-                    <span style={{ color: '#a1a1aa' }}>Clique para selecionar o arquivo</span>
-                  )}
-                </label>
-              </div>
+                
+                {file ? (
+                  <span className={styles.fileName}>{file.name}</span>
+                ) : (
+                  <span className={styles.placeholder}>Clique para selecionar o arquivo</span>
+                )}
+              </label>
 
-              {/* Barra de Progresso Fictícia (se estiver carregando) */}
+              {/* Barra de Progresso (aparece só carregando) */}
               {loading && (
-                <div style={{ width: '100%', background: '#2d2d3a', height: '6px', borderRadius: '3px', marginTop: '10px' }}>
-                  <div style={{ width: '60%', background: '#5b4bf6', height: '100%', borderRadius: '3px', transition: 'width 0.5s' }}></div>
+                <div className={`${styles.progressBarBg} ${styles.loading}`}>
+                  <div className={styles.progressBarFill}></div>
                 </div>
               )}
             </div>
 
+            {/* Footer */}
             <div className={styles.footer}>
-              <button className={styles.cancelBtn} onClick={() => setIsOpen(false)}>CANCELAR</button>
+              <button className={styles.cancelBtn} onClick={handleClose}>
+                CANCELAR
+              </button>
               <button 
-                className={styles.createBtn} 
+                className={styles.importBtn} 
                 onClick={handleImport}
                 disabled={!file || loading}
               >
                 {loading ? "IMPORTANDO..." : "IMPORTAR AGORA"}
               </button>
             </div>
+
           </div>
         </div>
       )}
