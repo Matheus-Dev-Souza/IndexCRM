@@ -10,6 +10,7 @@ import RemoveLeadModal from "@/components/leads/RemoveLeadModal";
 import ExportLeadModal from "@/components/leads/ExportLeadModal";
 import AddTagsModal from "@/components/leads/AddTagsModal";
 import RemoveTagsModal from "@/components/leads/RemoveTagsModal";
+import CalculateLeadTempModal from "@/components/leads/CalculateLeadTempModal";
 
 // Tipagem atualizada para bater com o LeadRowItem
 interface Lead {
@@ -86,6 +87,10 @@ export default async function LeadsPage() {
 
         {/* 6. REMOVE TaGs */}
         <RemoveTagsModal />
+
+        {/* 7. Calculara Temperatura do lead */}
+        <CalculateLeadTempModal />
+
       </div>
 
     </div>
